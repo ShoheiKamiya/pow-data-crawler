@@ -1,0 +1,9 @@
+{
+  "name": "pow-data-crawler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ShoheiKamiya/pow-data-crawler.git",
+  "author": "ShoheiKamiya <shoooooo.bqt@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
