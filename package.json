@@ -5,5 +5,8 @@
   "repository": "git@github.com:ShoheiKamiya/pow-data-crawler.git",
   "author": "ShoheiKamiya <shoooooo.bqt@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "puppeteer": "^5.5.0"
+  }
 }
