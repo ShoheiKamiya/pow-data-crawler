@@ -6,6 +6,7 @@
   "author": "ShoheiKamiya <shoooooo.bqt@gmail.com>",
   "license": "MIT",
   "private": false,
+  "type": "module",
   "dependencies": {
     "prettier": "^2.2.1",
     "puppeteer": "^5.5.0"
