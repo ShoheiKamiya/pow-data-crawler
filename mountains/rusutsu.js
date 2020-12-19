@@ -25,7 +25,7 @@ export class Rusutsu {
     return Number(this.snowfallStr.match(/\d+/, ''));
   }
   get depth() {
-    return Number(this.snowfallStr.match(/\d+/, ''));
+    return Number(this.depthStr.match(/\d+/, ''));
   }
   get temperature() {
     return Number(this.temperatureStr.replace('℃', ''))
