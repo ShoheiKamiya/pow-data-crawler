@@ -28,12 +28,14 @@ export class Nozawa {
     return Number(this.depthStr.match(/\d+/, ''));
   }
   get temperature() {
-    const text = '                      ℃'
+    const text = '                      ℃';
     return Number(this.temperatureStr.replace(text, ''));
   }
   get updated() {
-    // TODO: yyyy-mm-ddの形式に変換する
-    return this.updatedStr;
+    // 取得できる文字列 'update：12/20 07:30                '
+    // yyyy/mm/dd
+    const str = `${new Date().getFullYear()}/${this.updatedStr.match(/\d+\/\d+/)[0]}`;
+    return new Date(str);
   }
 
   get params() {
@@ -43,6 +45,6 @@ export class Nozawa {
       depth: this.depth,
       temperature: this.temperature,
       updated: this.updated,
-    }
+    };
   }
 }

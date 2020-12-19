@@ -31,8 +31,9 @@ export class GrandHirafu {
     return Number(this.temperatureStr.replace(' °C', ''))
   }
   get updated() {
-    // TODO: yyyy-mm-ddの形式に変換する
-    return this.updatedStr;
+    // スクレイピングで取得できる文字列 '更新日時： 2020/12/19/07:29'
+    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0]
+    return new Date(str);
   }
 
   get params() {

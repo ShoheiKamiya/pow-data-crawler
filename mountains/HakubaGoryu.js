@@ -31,8 +31,9 @@ export class HakubaGoryu {
     return Number(this.temperatureStr.split('　')[1].replace('℃', ''))
   }
   get updated() {
-    // TODO: yyyy-mm-ddの形式に変換する
-    return this.updatedStr;
+    // スクレイピングで取得できる文字列 '2020-12-20 07:43:55'
+    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0]
+    return new Date(str)
   }
 
   get params() {

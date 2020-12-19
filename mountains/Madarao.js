@@ -31,8 +31,9 @@ export class Madarao {
     return Number(this.temperatureStr)
   }
   get updated() {
-    // TODO: yyyy-mm-ddの形式に変換する
-    return this.updatedStr;
+    // スクレイピングで取得できる文字列 '2020-12-19 8:07 am'
+    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0]
+    return new Date(str)
   }
 
   get params() {
