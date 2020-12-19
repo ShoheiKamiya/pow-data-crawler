@@ -31,8 +31,9 @@ export class Rusutsu {
     return Number(this.temperatureStr.replace('℃', ''))
   }
   get updated() {
-    // TODO: yyyy-mm-ddの形式に変換する
-    return this.updatedStr;
+    // スクレイピングで取得できる文字列 '更新日時 : 2020/12/20(日) 7:35'
+    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0]
+    return new Date(str);
   }
 
   get params() {

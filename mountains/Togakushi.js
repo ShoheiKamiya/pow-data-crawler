@@ -31,8 +31,9 @@ export class Togakushi {
     return Number(this.temperatureStr);
   }
   get updated() {
-    // TODO: yyyy-mm-ddの形式に変換する
-    return this.updatedStr;
+    // スクレイピングで取得できる文字列 '12/20'
+    const str = `${new Date().getFullYear()}/${this.updatedStr}`;
+    return new Date(str);
   }
 
   get params() {
