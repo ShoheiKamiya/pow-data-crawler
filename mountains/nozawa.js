@@ -38,6 +38,7 @@ export class Nozawa {
 
   get params() {
     return {
+      id: Nozawa.ID,
       snowfall: this.snowfall,
       depth: this.depth,
       temperature: this.temperature,

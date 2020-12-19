@@ -37,6 +37,7 @@ export class HakubaGoryu {
 
   get params() {
     return {
+      id: HakubaGoryu.ID,
       snowfall: this.snowfall,
       depth: this.depth,
       temperature: this.temperature,

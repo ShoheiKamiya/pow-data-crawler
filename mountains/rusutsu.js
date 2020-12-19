@@ -37,6 +37,7 @@ export class Rusutsu {
 
   get params() {
     return {
+      id: Rusutsu.ID,
       snowfall: this.snowfall,
       depth: this.depth,
       temperature: this.temperature,

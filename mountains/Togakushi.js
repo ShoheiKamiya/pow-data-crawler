@@ -37,6 +37,7 @@ export class Togakushi {
 
   get params() {
     return {
+      id: Togakushi.ID,
       snowfall: this.snowfall,
       depth: this.depth,
       temperature: this.temperature,

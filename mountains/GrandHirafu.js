@@ -37,6 +37,7 @@ export class GrandHirafu {
 
   get params() {
     return {
+      id: GrandHirafu.ID,
       snowfall: this.snowfall,
       depth: this.depth,
       temperature: this.temperature,

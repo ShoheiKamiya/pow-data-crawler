@@ -37,6 +37,7 @@ export class Madarao {
 
   get params() {
     return {
+      id: Madarao.ID,
       snowfall: this.snowfall,
       depth: this.depth,
       temperature: this.temperature,

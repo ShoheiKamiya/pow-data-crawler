@@ -1,7 +1,12 @@
 import puppeteer from 'puppeteer';
 import pkg from 'csv-writer';
-import { mountains } from './mountains.js';
 const { createObjectCsvWriter } = pkg;
+import { Nozawa } from './mountains/nozawa.js';
+import { Rusutsu } from './mountains/Rusutsu.js';
+import { GrandHirafu } from './mountains/GrandHirafu.js';
+import { Madarao } from './mountains/Madarao.js';
+import { Togakushi } from './mountains/Togakushi.js';
+import { HakubaGoryu } from './mountains/HakubaGoryu.js';
 
 const fetchWithXpath = async (page, xpath) => {
   if (!xpath) {
@@ -12,8 +17,16 @@ const fetchWithXpath = async (page, xpath) => {
 };
 
 const yyyymmdd = (date) => {
-  return `${date.getFullYear()}${date.getMonth()+1}${date.getDate()}`
-}
+  return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
+};
+
+const mountains = [
+  Nozawa,
+  Rusutsu,
+  GrandHirafu,
+  Madarao,
+  HakubaGoryu,
+]
 
 let array = [];
 (async () => {
@@ -21,21 +34,24 @@ let array = [];
   const page = await browser.newPage();
 
   for await (let mountain of mountains) {
-    console.log(`fetching ${mountain.id}......`)
+    console.log(`fetching ${mountain.ID}......`);
 
-    await page.goto(mountain.url, { waitUntil: 'networkidle0' });
-    const snowfall = await fetchWithXpath(page, mountain.snowfallXpath);
-    const depth = await fetchWithXpath(page, mountain.depthXpath);
-    const temperature = await fetchWithXpath(page, mountain.temperatureXpath);
-    const updated = await fetchWithXpath(page, mountain.updatedXpath);
+    await page.goto(mountain.URL, { waitUntil: 'networkidle0' });
+    const snowfall = await fetchWithXpath(page, mountain.SELECTORS.snowfall);
+    const depth = await fetchWithXpath(page, mountain.SELECTORS.depth);
+    const temperature = await fetchWithXpath(page, mountain.SELECTORS.temperature);
+    const updated = await fetchWithXpath(page, mountain.SELECTORS.updated);
 
-    const stats = { id: mountain.id, snowfall, depth, temperature, updated };
-    console.log('done')
-    array.push(stats);
+    const m = new mountain(snowfall, depth, temperature, updated)
+    console.log(m.params)
+
+    const stats = { id: mountain.ID, snowfall, depth, temperature, updated };
+    console.log('done');
+    array.push(m.params);
   }
 
   const csv = createObjectCsvWriter({
-    path: `./stats/${yyyymmdd(new Date)}.csv`,
+    path: `./stats/${yyyymmdd(new Date())}_1.csv`,
     header: [
       { id: 'id', title: 'id' },
       { id: 'snowfall', title: 'snowfall' },
@@ -45,9 +61,9 @@ let array = [];
     ],
   });
   csv.writeRecords(array).then(() => {
-    console.log('*************************')
+    console.log('*************************');
     console.log('DONE!! csv is exported!');
-    console.log('*************************')
+    console.log('*************************');
   });
 
   await browser.close();
