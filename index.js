@@ -26,10 +26,10 @@ let array = [];
     await page.goto(mountain.url, { waitUntil: 'networkidle0' });
     const snowfall = await fetchWithXpath(page, mountain.snowfallXpath);
     const depth = await fetchWithXpath(page, mountain.depthXpath);
-    const tempreture = await fetchWithXpath(page, mountain.tempretureXpath);
+    const temperature = await fetchWithXpath(page, mountain.temperatureXpath);
     const updated = await fetchWithXpath(page, mountain.updatedXpath);
 
-    const stats = { id: mountain.id, snowfall, depth, tempreture, updated };
+    const stats = { id: mountain.id, snowfall, depth, temperature, updated };
     console.log('done')
     array.push(stats);
   }
@@ -40,7 +40,7 @@ let array = [];
       { id: 'id', title: 'id' },
       { id: 'snowfall', title: 'snowfall' },
       { id: 'depth', title: 'depth' },
-      { id: 'tempreture', title: 'tempreture' },
+      { id: 'temperature', title: 'temperature' },
       { id: 'updated', title: 'updated' },
     ],
   });
