@@ -25,6 +25,7 @@ const mountains = [
   Rusutsu,
   GrandHirafu,
   Madarao,
+  Togakushi,
   HakubaGoryu,
 ]
 
