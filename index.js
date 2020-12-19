@@ -52,7 +52,7 @@ let array = [];
   }
 
   const csv = createObjectCsvWriter({
-    path: `./stats/${yyyymmdd(new Date())}_1.csv`,
+    path: `./stats/${yyyymmdd(new Date())}.csv`,
     header: [
       { id: 'id', title: 'id' },
       { id: 'snowfall', title: 'snowfall' },
