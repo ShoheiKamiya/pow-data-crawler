@@ -7,21 +7,31 @@ import { mountains } from './mountains.js';
 
   for await (let mountain of mountains) {
     await page.goto(mountain.url);
-    const depthElements = await page.$x(mountain.depthXpath);
-    const snowfallElements = await page.$x(mountain.snowfallXpath);
-    const tempretureElements = await page.$x(mountain.tempretureXpath);
-    const updatedElements = await page.$x(mountain.updatedXpath);
-
-    const depth = await (await depthElements[0].getProperty('textContent')).jsonValue();
-    const snowfall = await (await snowfallElements[0].getProperty('textContent')).jsonValue();
-    const tempreture = await (await tempretureElements[0].getProperty('textContent')).jsonValue();
-    const updated = await (await updatedElements[0].getProperty('textContent')).jsonValue();
-
     console.log(`<< ${mountain.id} >>`);
-    console.log({ depth });
-    console.log({ snowfall });
-    console.log({ tempreture });
-    console.log({ updated });
+
+    if (mountain.snowfallXpath) {
+      const snowfallElements = await page.$x(mountain.snowfallXpath);
+      const snowfall = await (await snowfallElements[0].getProperty('textContent')).jsonValue();
+      console.log({ snowfall });
+    }
+
+    if (mountain.depthXpath) {
+      const depthElements = await page.$x(mountain.depthXpath);
+      const depth = await (await depthElements[0].getProperty('textContent')).jsonValue();
+      console.log({ depth });
+    }
+
+    if (mountain.tempretureXpath) {
+      const tempretureElements = await page.$x(mountain.tempretureXpath);
+      const tempreture = await (await tempretureElements[0].getProperty('textContent')).jsonValue();
+      console.log({ tempreture });
+    }
+
+    if (mountain.tempretureXpath) {
+      const updatedElements = await page.$x(mountain.updatedXpath);
+      const updated = await (await updatedElements[0].getProperty('textContent')).jsonValue();
+      console.log({ updated });
+    }
   }
 
   await browser.close();
