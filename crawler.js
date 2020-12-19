@@ -11,18 +11,10 @@ import { mountains } from './mountains.js';
   const tempretureElements = await page.$x(mountains[0].tempretureXpath);
   const updatedElements = await page.$x(mountains[0].updatedXpath);
 
-  const depth = await (
-    await depthElements[0].getProperty('textContent')
-  ).jsonValue();
-  const snowfall = await (
-    await snowfallElements[0].getProperty('textContent')
-  ).jsonValue();
-  const tempreture = await (
-    await tempretureElements[0].getProperty('textContent')
-  ).jsonValue();
-  const updated = await (
-    await updatedElements[0].getProperty('textContent')
-  ).jsonValue();
+  const depth = await (await depthElements[0].getProperty('textContent')).jsonValue();
+  const snowfall = await (await snowfallElements[0].getProperty('textContent')).jsonValue();
+  const tempreture = await (await tempretureElements[0].getProperty('textContent')).jsonValue();
+  const updated = await (await updatedElements[0].getProperty('textContent')).jsonValue();
 
   console.log({ depth });
   console.log({ snowfall });
