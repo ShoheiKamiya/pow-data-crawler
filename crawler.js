@@ -6,7 +6,7 @@ import { mountains } from './mountains.js';
   const page = await browser.newPage();
 
   for await (let mountain of mountains) {
-    await page.goto(mountain.url);
+    await page.goto(mountain.url, { waitUntil: 'networkidle0' });
     console.log(`<< ${mountain.id} >>`);
 
     if (mountain.snowfallXpath) {
