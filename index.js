@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 import pkg from 'csv-writer';
 const { createObjectCsvWriter } = pkg;
-import { Nozawa } from './mountains/nozawa.js';
+import { Nozawa } from './mountains/Nozawa.js';
 import { Rusutsu } from './mountains/Rusutsu.js';
 import { GrandHirafu } from './mountains/GrandHirafu.js';
 import { Madarao } from './mountains/Madarao.js';
