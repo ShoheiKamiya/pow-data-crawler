@@ -1,16 +1,15 @@
-export class Madarao {
+import { Mountain } from '../Mountain.js';
+
+export class Madarao extends Mountain {
   constructor(snowfallStr, depthStr, temperatureStr, updatedStr) {
-    this.snowfallStr = snowfallStr;
-    this.depthStr = depthStr;
-    this.temperatureStr = temperatureStr;
-    this.updatedStr = updatedStr;
+    super(snowfallStr, depthStr, temperatureStr, updatedStr);
   }
 
   static get ID() {
     return 'madarao';
   }
   static get URL() {
-    return 'http://www.madarao.jp/ski'
+    return 'http://www.madarao.jp/ski';
   }
   static get SELECTORS() {
     return {
@@ -28,12 +27,12 @@ export class Madarao {
     return Number(this.depthStr.match(/\d+/, ''));
   }
   get temperature() {
-    return Number(this.temperatureStr)
+    return Number(this.temperatureStr);
   }
   get updated() {
     // スクレイピングで取得できる文字列 '2020-12-19 8:07 am'
-    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0]
-    return new Date(str)
+    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0];
+    return super.formatDate(new Date(str));
   }
 
   get params() {
@@ -43,6 +42,6 @@ export class Madarao {
       depth: this.depth,
       temperature: this.temperature,
       updated: this.updated,
-    }
+    };
   }
 }

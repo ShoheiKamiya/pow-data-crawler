@@ -1,16 +1,14 @@
-export class GrandHirafu {
+import { Mountain } from '../Mountain.js';
+export class GrandHirafu extends Mountain {
   constructor(snowfallStr, depthStr, temperatureStr, updatedStr) {
-    this.snowfallStr = snowfallStr;
-    this.depthStr = depthStr;
-    this.temperatureStr = temperatureStr;
-    this.updatedStr = updatedStr;
+    super(snowfallStr, depthStr, temperatureStr, updatedStr);
   }
 
   static get ID() {
     return 'grand_hirafu';
   }
   static get URL() {
-    return 'https://www.grand-hirafu.jp/winter/gelande/business_hours/'
+    return 'https://www.grand-hirafu.jp/winter/gelande/business_hours/';
   }
   static get SELECTORS() {
     return {
@@ -28,12 +26,12 @@ export class GrandHirafu {
     return Number(this.depthStr.match(/\d+/, ''));
   }
   get temperature() {
-    return Number(this.temperatureStr.replace(' °C', ''))
+    return Number(this.temperatureStr.replace(' °C', ''));
   }
   get updated() {
     // スクレイピングで取得できる文字列 '更新日時： 2020/12/19/07:29'
-    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0]
-    return new Date(str);
+    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0];
+    return super.formatDate(new Date(str));
   }
 
   get params() {
@@ -43,6 +41,6 @@ export class GrandHirafu {
       depth: this.depth,
       temperature: this.temperature,
       updated: this.updated,
-    }
+    };
   }
 }

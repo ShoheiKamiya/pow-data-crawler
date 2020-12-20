@@ -1,9 +1,8 @@
-export class Nozawa {
+import { Mountain } from '../Mountain.js';
+
+export class Nozawa extends Mountain {
   constructor(snowfallStr, depthStr, temperatureStr, updatedStr) {
-    this.snowfallStr = snowfallStr;
-    this.depthStr = depthStr;
-    this.temperatureStr = temperatureStr;
-    this.updatedStr = updatedStr;
+    super(snowfallStr, depthStr, temperatureStr, updatedStr);
   }
 
   static get ID() {
@@ -33,9 +32,8 @@ export class Nozawa {
   }
   get updated() {
     // 取得できる文字列 'update：12/20 07:30                '
-    // yyyy/mm/dd
     const str = `${new Date().getFullYear()}/${this.updatedStr.match(/\d+\/\d+/)[0]}`;
-    return new Date(str);
+    return super.formatDate(new Date(str));
   }
 
   get params() {

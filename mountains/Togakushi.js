@@ -1,9 +1,8 @@
-export class Togakushi {
+import { Mountain } from '../Mountain.js';
+
+export class Togakushi extends Mountain {
   constructor(snowfallStr, depthStr, temperatureStr, updatedStr) {
-    this.snowfallStr = snowfallStr;
-    this.depthStr = depthStr;
-    this.temperatureStr = temperatureStr;
-    this.updatedStr = updatedStr;
+    super(snowfallStr, depthStr, temperatureStr, updatedStr);
   }
 
   static get ID() {
@@ -33,7 +32,7 @@ export class Togakushi {
   get updated() {
     // スクレイピングで取得できる文字列 '12/20'
     const str = `${new Date().getFullYear()}/${this.updatedStr}`;
-    return new Date(str);
+    return super.formatDate(new Date(str));
   }
 
   get params() {

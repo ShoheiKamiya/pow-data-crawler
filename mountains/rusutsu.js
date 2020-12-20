@@ -1,16 +1,15 @@
-export class Rusutsu {
+import { Mountain } from '../Mountain.js';
+
+export class Rusutsu extends Mountain {
   constructor(snowfallStr, depthStr, temperatureStr, updatedStr) {
-    this.snowfallStr = snowfallStr;
-    this.depthStr = depthStr;
-    this.temperatureStr = temperatureStr;
-    this.updatedStr = updatedStr;
+    super(snowfallStr, depthStr, temperatureStr, updatedStr);
   }
 
   static get ID() {
     return 'rusutsu';
   }
   static get URL() {
-    return 'https://rusutsu.com/snow-and-weather-report/'
+    return 'https://rusutsu.com/snow-and-weather-report/';
   }
   static get SELECTORS() {
     return {
@@ -28,12 +27,12 @@ export class Rusutsu {
     return Number(this.depthStr.match(/\d+/, ''));
   }
   get temperature() {
-    return Number(this.temperatureStr.replace('℃', ''))
+    return Number(this.temperatureStr.replace('℃', ''));
   }
   get updated() {
     // スクレイピングで取得できる文字列 '更新日時 : 2020/12/20(日) 7:35'
-    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0]
-    return new Date(str);
+    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0];
+    return super.formatDate(new Date(str));
   }
 
   get params() {
@@ -43,6 +42,6 @@ export class Rusutsu {
       depth: this.depth,
       temperature: this.temperature,
       updated: this.updated,
-    }
+    };
   }
 }

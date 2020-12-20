@@ -1,9 +1,8 @@
-export class HakubaGoryu {
+import { Mountain } from '../Mountain.js';
+
+export class HakubaGoryu extends Mountain {
   constructor(snowfallStr, depthStr, temperatureStr, updatedStr) {
-    this.snowfallStr = snowfallStr;
-    this.depthStr = depthStr;
-    this.temperatureStr = temperatureStr;
-    this.updatedStr = updatedStr;
+    super(snowfallStr, depthStr, temperatureStr, updatedStr);
   }
 
   static get ID() {
@@ -28,12 +27,12 @@ export class HakubaGoryu {
     return Number(this.depthStr.match(/\d+/, ''));
   }
   get temperature() {
-    return Number(this.temperatureStr.split('　')[1].replace('℃', ''))
+    return Number(this.temperatureStr.split('　')[1].replace('℃', ''));
   }
   get updated() {
     // スクレイピングで取得できる文字列 '2020-12-20 07:43:55'
-    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0]
-    return new Date(str)
+    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0];
+    return super.formatDate(new Date(str));
   }
 
   get params() {
