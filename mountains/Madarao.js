@@ -21,13 +21,15 @@ export class Madarao extends Mountain {
   }
 
   get snowfall() {
-    return Number(this.snowfallStr.match(/\d+/, ''));
+    const value = this.snowfallStr.match(/\d+/, '');
+    return value ? value : null;
   }
   get depth() {
     return Number(this.depthStr.match(/\d+/, ''));
   }
   get temperature() {
-    return Number(this.temperatureStr);
+    const value = Number(this.temperatureStr);
+    return isNaN(value) ? null : value;
   }
   get updated() {
     // スクレイピングで取得できる文字列 '2020-12-19 8:07 am'
