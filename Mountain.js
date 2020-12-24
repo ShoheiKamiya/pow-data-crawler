@@ -8,7 +8,11 @@ export class Mountain {
     this.updatedStr = updatedStr;
   }
 
+  static formatDate(date) {
+    return formatDate(date);
+  }
+
   formatDate(date) {
-    return formatDate(date)
+    return formatDate(date);
   }
 }
