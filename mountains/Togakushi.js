@@ -20,6 +20,23 @@ export class Togakushi extends Mountain {
     };
   }
 
+  static parseSnowfall(snowfallStr) {
+    return null;
+  }
+
+  static parseDepth(depthStr) {
+    return Number(depthStr);
+  }
+
+  static parseTemperature(temperatureStr) {
+    return Number(temperatureStr);
+  }
+
+  static parseUpdated(updatedStr) {
+    const str = `${new Date().getFullYear()}/${updatedStr}`;
+    return super.formatDate(new Date(str));
+  }
+
   get snowfall() {
     return null;
   }
