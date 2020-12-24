@@ -20,9 +20,32 @@ export class Madarao extends Mountain {
     };
   }
 
+  static parseSnowfall(snowfallStr) {
+    const value = snowfallStr.match(/\d+/, '');
+    return value ? Number(value) : null;
+  }
+
+  static parseDepth(depthStr) {
+    const value = depthStr.match(/\d+/, '');
+    return value ? Number(value) : null;
+  }
+
+  static parseTemperature(temperatureStr) {
+    if (temperatureStr === '' || isNaN(Number(temperatureStr))) {
+      return null;
+    }
+
+    return Number(temperatureStr);
+  }
+
+  static parseUpdated(updatedStr) {
+    const str = updatedStr.match(/\d+\-\d+\-\d+/)[0];
+    return super.formatDate(new Date(str));
+  }
+
   get snowfall() {
     const value = this.snowfallStr.match(/\d+/, '');
-    return value ? value : null;
+    return value ? Number(value) : null;
   }
   get depth() {
     return Number(this.depthStr.match(/\d+/, ''));
