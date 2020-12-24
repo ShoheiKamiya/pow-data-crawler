@@ -19,6 +19,29 @@ export class GrandHirafu extends Mountain {
     };
   }
 
+  static parseSnowfall(snowfallStr) {
+    return null;
+  }
+
+  static parseDepth(depthStr) {
+    const value = depthStr.match(/\d+/, '');
+    return value ? Number(value) : null;
+  }
+
+  static parseTemperature(temperatureStr) {
+    const value = temperatureStr.replace(' °C', '');
+    if (value === '' || isNaN(Number(value))) {
+      return null;
+    }
+
+    return Number(value);
+  }
+
+  static parseUpdated(updatedStr) {
+    const str = updatedStr.match(/\d+\/\d+\/\d+/)[0];
+    return super.formatDate(new Date(str));
+  }
+
   get snowfall() {
     return null;
   }

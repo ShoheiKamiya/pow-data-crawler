@@ -20,6 +20,38 @@ export class HakubaGoryu extends Mountain {
     };
   }
 
+  static parseSnowfall(snowfallStr) {
+    const value = snowfallStr.match(/\d+/, '');
+    if (value === '' || value === null) {
+      return null;
+    }
+
+    return Number(value);
+  }
+
+  static parseDepth(parseDepth) {
+    const value = parseDepth.match(/\d+/, '');
+    if (value === '' || value === null) {
+      return null;
+    }
+
+    return Number(value);
+  }
+
+  static parseTemperature(temperatureStr) {
+    if (temperatureStr === '' || temperatureStr === null) {
+      return null;
+    }
+
+    const value = temperatureStr.split('　')[1].replace('℃', '');
+    return Number(value);
+  }
+
+  static parseUpdated(updatedStr) {
+    const str = updatedStr.match(/\d+\-\d+\-\d+/)[0];
+    return super.formatDate(new Date(str));
+  }
+
   get snowfall() {
     return Number(this.snowfallStr.match(/\d+/, ''));
   }
