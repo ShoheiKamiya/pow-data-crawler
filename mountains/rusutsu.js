@@ -20,6 +20,23 @@ export class Rusutsu extends Mountain {
     };
   }
 
+  static parseSnowfall(snowfallStr) {
+    return Number(snowfallStr.match(/\d+/, ''));
+  }
+
+  static parseDepth(depthStr) {
+    return Number(depthStr.match(/\d+/, ''));
+  }
+
+  static parseTemperature(temperatureStr) {
+    return Number(temperatureStr.replace('℃', ''));
+  }
+
+  static parseUpdated(updatedStr) {
+    const str = updatedStr.match(/\d+\/\d+\/\d+/)[0];
+    return super.formatDate(new Date(str));
+  }
+
   get snowfall() {
     return Number(this.snowfallStr.match(/\d+/, ''));
   }
