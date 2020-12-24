@@ -20,6 +20,28 @@ export class Nozawa extends Mountain {
     };
   }
 
+  static parseSnowfall(snowfallStr) {
+    if (snowfallStr === null) {
+      return null;
+    }
+
+    return Number(snowfallStr.match(/\d+/, ''));
+  }
+
+  static parseDepth(depthStr) {
+    return Number(depthStr.match(/\d+/, ''));
+  }
+
+  static parseTemperature(temperatureStr) {
+    const text = '                      ℃';
+    return Number(temperatureStr.replace(text, ''));
+  }
+
+  static parseUpdated(updatedStr) {
+    const str = `${new Date().getFullYear()}/${updatedStr.match(/\d+\/\d+/)[0]}`;
+    return super.formatDate(new Date(str));
+  }
+
   get snowfall() {
     return Number(this.snowfallStr.match(/\d+/, ''));
   }
