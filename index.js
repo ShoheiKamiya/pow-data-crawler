@@ -21,12 +21,12 @@ const yyyymmdd = (date) => {
 };
 
 const mountains = [
+  GrandHirafu,
+  HakubaGoryu,
+  Madarao,
   Nozawa,
   Rusutsu,
-  GrandHirafu,
-  Madarao,
   Togakushi,
-  HakubaGoryu,
 ]
 
 let array = [];
