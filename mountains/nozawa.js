@@ -43,19 +43,16 @@ export class Nozawa extends Mountain {
   }
 
   get snowfall() {
-    return Number(this.snowfallStr.match(/\d+/, ''));
+    return Nozawa.parseSnowfall(this.snowfallStr);
   }
   get depth() {
-    return Number(this.depthStr.match(/\d+/, ''));
+    return Nozawa.parseDepth(this.depthStr);
   }
   get temperature() {
-    const text = '                      ℃';
-    return Number(this.temperatureStr.replace(text, ''));
+    return Nozawa.parseTemperature(this.temperatureStr);
   }
   get updated() {
-    // 取得できる文字列 'update：12/20 07:30                '
-    const str = `${new Date().getFullYear()}/${this.updatedStr.match(/\d+\/\d+/)[0]}`;
-    return super.formatDate(new Date(str));
+    return Nozawa.parseUpdated(this.updatedStr);
   }
 
   get params() {

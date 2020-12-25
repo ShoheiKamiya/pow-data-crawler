@@ -38,18 +38,16 @@ export class Togakushi extends Mountain {
   }
 
   get snowfall() {
-    return null;
+    return Togakushi.parseSnowfall(this.snowfallStr);
   }
   get depth() {
-    return Number(this.depthStr);
+    return Togakushi.parseDepth(this.depthStr);
   }
   get temperature() {
-    return Number(this.temperatureStr);
+    return Togakushi.parseTemperature(this.temperatureStr);
   }
   get updated() {
-    // スクレイピングで取得できる文字列 '12/20'
-    const str = `${new Date().getFullYear()}/${this.updatedStr}`;
-    return super.formatDate(new Date(str));
+    return Togakushi.parseUpdated(this.updatedStr);
   }
 
   get params() {

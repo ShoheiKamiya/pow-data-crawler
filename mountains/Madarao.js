@@ -44,20 +44,16 @@ export class Madarao extends Mountain {
   }
 
   get snowfall() {
-    const value = this.snowfallStr.match(/\d+/, '');
-    return value ? Number(value) : null;
+    return Madarao.parseSnowfall(this.snowfallStr);
   }
   get depth() {
-    return Number(this.depthStr.match(/\d+/, ''));
+    return Madarao.parseDepth(this.depthStr);
   }
   get temperature() {
-    const value = Number(this.temperatureStr);
-    return isNaN(value) ? null : value;
+    return Madarao.parseTemperature(this.temperatureStr);
   }
   get updated() {
-    // スクレイピングで取得できる文字列 '2020-12-19 8:07 am'
-    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0];
-    return super.formatDate(new Date(str));
+    return Madarao.parseUpdated(this.updatedStr);
   }
 
   get params() {

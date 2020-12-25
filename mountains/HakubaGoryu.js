@@ -53,18 +53,16 @@ export class HakubaGoryu extends Mountain {
   }
 
   get snowfall() {
-    return Number(this.snowfallStr.match(/\d+/, ''));
+    return HakubaGoryu.parseSnowfall(this.snowfallStr);
   }
   get depth() {
-    return Number(this.depthStr.match(/\d+/, ''));
+    return HakubaGoryu.parseDepth(this.depthStr);
   }
   get temperature() {
-    return Number(this.temperatureStr.split('　')[1].replace('℃', ''));
+    return HakubaGoryu.parseTemperature(this.temperatureStr);
   }
   get updated() {
-    // スクレイピングで取得できる文字列 '2020-12-20 07:43:55'
-    const str = this.updatedStr.match(/\d+\-\d+\-\d+/)[0];
-    return super.formatDate(new Date(str));
+    return HakubaGoryu.parseUpdated(this.updatedStr);
   }
 
   get params() {

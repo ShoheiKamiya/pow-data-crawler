@@ -38,18 +38,16 @@ export class Rusutsu extends Mountain {
   }
 
   get snowfall() {
-    return Number(this.snowfallStr.match(/\d+/, ''));
+    return Rusutsu.parseSnowfall(this.snowfallStr);
   }
   get depth() {
-    return Number(this.depthStr.match(/\d+/, ''));
+    return Rusutsu.parseDepth(this.depthStr);
   }
   get temperature() {
-    return Number(this.temperatureStr.replace('℃', ''));
+    return Rusutsu.parseTemperature(this.temperatureStr);
   }
   get updated() {
-    // スクレイピングで取得できる文字列 '更新日時 : 2020/12/20(日) 7:35'
-    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0];
-    return super.formatDate(new Date(str));
+    return Rusutsu.parseUpdated(this.updatedStr);
   }
 
   get params() {

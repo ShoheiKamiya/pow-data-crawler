@@ -43,18 +43,16 @@ export class GrandHirafu extends Mountain {
   }
 
   get snowfall() {
-    return null;
+    return GrandHirafu.parseSnowfall(this.snowfallStr);
   }
   get depth() {
-    return Number(this.depthStr.match(/\d+/, ''));
+    return GrandHirafu.parseDepth(this.depthStr);
   }
   get temperature() {
-    return Number(this.temperatureStr.replace(' °C', ''));
+    return GrandHirafu.parseTemperature(this.temperatureStr);
   }
   get updated() {
-    // スクレイピングで取得できる文字列 '更新日時： 2020/12/19/07:29'
-    const str = this.updatedStr.match(/\d+\/\d+\/\d+/)[0];
-    return super.formatDate(new Date(str));
+    return GrandHirafu.parseUpdated(this.updatedStr);
   }
 
   get params() {
