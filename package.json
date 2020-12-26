@@ -12,6 +12,9 @@
     "prettier": "^2.2.1",
     "puppeteer": "^5.5.0"
   },
+  "scripts": {
+    "build": "webpack --config webpack.config.cjs"
+  },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
