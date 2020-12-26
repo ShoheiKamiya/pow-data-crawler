@@ -13,10 +13,11 @@ export class HakubaGoryu extends Mountain {
   }
   static get SELECTORS() {
     return {
-      snowfall: '//*[@id="firstLine"]/div/div[1]/div/div[2]/div[2]/ul/li[3]',
-      depth: '//*[@id="firstLine"]/div/div[1]/div/div[2]/div[2]/ul/li[2]',
-      temperature: '//*[@id="firstLine"]/div/div[1]/div/div[2]/div[2]/ul/li[1]',
-      updated: '//*[@id="firstLine"]/div/div[1]/div/div[1]/div[2]/p/text()',
+      snowfall: '//*[@id="snow_snow_accumulation_difference_text_alps"]',
+      depth: '//*[@id="snow_accumulation_text_alps"]',
+      temperature: '//*[@id="temperature_text_alps"]',
+      // 存在しないのでとりあえず「アルプス平ゲレンデ」のDOMを指定
+      updated: '//*[@id="y-course-weather"]/table/tbody/tr[1]/th',
     };
   }
 
@@ -43,13 +44,12 @@ export class HakubaGoryu extends Mountain {
       return null;
     }
 
-    const value = temperatureStr.split('　')[1].replace('℃', '');
-    return Number(value);
+    const removedText = '℃';
+    return Number(temperatureStr.replace(removedText, ''));
   }
 
   static parseUpdated(updatedStr) {
-    const str = updatedStr.match(/\d+\-\d+\-\d+/)[0];
-    return super.formatDate(new Date(str));
+    return super.formatDate(new Date());
   }
 
   get snowfall() {
