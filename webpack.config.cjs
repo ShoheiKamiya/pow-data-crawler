@@ -3,7 +3,7 @@ module.exports = {
   target: 'node',
   output: {
     path: __dirname + '/dist',
-    filename: 'sample.js',
+    filename: 'index.js',
   },
   mode: 'production',
   module: {
