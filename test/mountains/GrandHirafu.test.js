@@ -1,4 +1,4 @@
-import { GrandHirafu } from '../../mountains/GrandHirafu.js';
+import { GrandHirafu } from '../../src/mountains/GrandHirafu.js';
 
 // {
 //   snowfall: null,
