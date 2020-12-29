@@ -1,5 +1,4 @@
-import pkg from 'csv-writer';
-const { createObjectCsvWriter } = pkg;
+import { createObjectCsvWriter } from 'csv-writer'
 import AWS from 'aws-sdk';
 import fs from 'fs';
 import { GrandHirafu } from './mountains/GrandHirafu.js';

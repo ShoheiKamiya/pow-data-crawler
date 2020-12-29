@@ -9,7 +9,9 @@
   "type": "module",
   "dependencies": {
     "aws-sdk": "^2.817.0",
-    "csv-writer": "^1.6.0"
+    "chrome-aws-lambda": "^5.5.0",
+    "csv-writer": "^1.6.0",
+    "puppeteer-core": "^5.5.0"
   },
   "scripts": {
     "start": "node indexLocal.js",
