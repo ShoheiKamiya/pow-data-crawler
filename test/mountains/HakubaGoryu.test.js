@@ -1,4 +1,4 @@
-import { HakubaGoryu } from '../../mountains/HakubaGoryu.js';
+import { HakubaGoryu } from '../../src/mountains/HakubaGoryu.js';
 
 // snowfall: '25㎝',
 // depth: '210㎝',

@@ -1,4 +1,4 @@
-import { formatDate } from '../utils';
+import { formatDate } from '../src/utils';
 
 test('フォーマットすること', () => {
   const date1 = new Date(2020, 12 - 1, 20);
