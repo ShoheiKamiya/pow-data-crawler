@@ -1,9 +1,9 @@
-exports.handler = async(event) => {
-  const className = event.mountain
-  const mountain = require(`./mountains/${className}.js`)[className]
+exports.handler = async (event) => {
+  const className = event.mountain;
+  const mountain = require(`./mountains/${className}.js`)[className];
   const chromium = require('chrome-aws-lambda');
 
-  const fetchWithXpath = async(page, xpath) => {
+  const fetchWithXpath = async (page, xpath) => {
     if (!xpath) {
       return null;
     }
@@ -14,19 +14,16 @@ exports.handler = async(event) => {
 
   // puppeteer
   const browser = await chromium.puppeteer.launch({
-    args: [
-      ...chromium.args,
-      '--single-process',
-    ],
+    args: [...chromium.args, '--single-process'],
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath,
     headless: chromium.headless,
-    ignoreHTTPSErrors: true
+    ignoreHTTPSErrors: true,
   });
   const page = await browser.newPage();
 
   await page.goto(mountain.URL, {
-    waitUntil: 'networkidle0'
+    waitUntil: 'networkidle0',
   });
   const snowfall = await fetchWithXpath(page, mountain.SELECTORS.snowfall);
   const depth = await fetchWithXpath(page, mountain.SELECTORS.depth);
