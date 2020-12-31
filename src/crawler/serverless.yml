@@ -1,0 +1,26 @@
+service: pow-data-crawler
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: ap-northeast-1
+package: ${file(../../serverless.common.yml):package}
+plugins:
+  - serverless-webpack
+  - serverless-pseudo-parameters
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.cjs'   # Name of webpack configuration file
+    includeModules: false   # Node modules configuration for packaging
+    packager: 'yarn'   # Packager that will be used to package your external modules
+functions:
+  crawler:
+    handler: index.handler
+    layers:
+      - arn:aws:lambda:ap-northeast-1:#{AWS::AccountId}:layer:puppeteer:2
+    name: ${self:service}-${self:provider.stage}
+    description: スキー場webサイトをクローリングする
+    runtime: nodejs12.x
+    memorySize: 1024
+    timeout: 30

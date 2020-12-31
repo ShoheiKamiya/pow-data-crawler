@@ -20,7 +20,7 @@ exports.handler = async (event, context, callback) => {
   ];
   const crawlers = mountainClassNames.map((mountain) => {
     const params = {
-      FunctionName: 'crawler',
+      FunctionName: process.env.CRAWLER_FUNCTION_NAME,
       Payload: JSON.stringify({ mountain }),
     };
     return lambda.invoke(params).promise();

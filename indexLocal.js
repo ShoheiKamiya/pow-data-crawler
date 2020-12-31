@@ -1,12 +1,12 @@
 import puppeteer from 'puppeteer';
 import pkg from 'csv-writer';
 const { createObjectCsvWriter } = pkg;
-import { GrandHirafu } from './src/mountains/GrandHirafu.js';
-import { HakubaGoryu } from './src/mountains/HakubaGoryu.js';
-import { Madarao } from './src/mountains/Madarao.js';
-import { Nozawa } from './src/mountains/Nozawa.js';
-import { Rusutsu } from './src/mountains/Rusutsu.js';
-import { Togakushi } from './src/mountains/Togakushi.js';
+import { GrandHirafu } from './src/crawler/mountains/GrandHirafu.js';
+import { HakubaGoryu } from './src/crawler/mountains/HakubaGoryu.js';
+import { Madarao } from './src/crawler/mountains/Madarao.js';
+import { Nozawa } from './src/crawler/mountains/Nozawa.js';
+import { Rusutsu } from './src/crawler/mountains/Rusutsu.js';
+import { Togakushi } from './src/crawler/mountains/Togakushi.js';
 
 const fetchWithXpath = async (page, xpath) => {
   if (!xpath) {
@@ -20,14 +20,7 @@ const yyyymmdd = (date) => {
   return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
 };
 
-const mountains = [
-  GrandHirafu,
-  HakubaGoryu,
-  Madarao,
-  Nozawa,
-  Rusutsu,
-  Togakushi,
-];
+const mountains = [GrandHirafu, HakubaGoryu, Madarao, Nozawa, Rusutsu, Togakushi];
 
 let array = [];
 (async () => {

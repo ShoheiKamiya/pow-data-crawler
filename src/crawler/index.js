@@ -1,6 +1,7 @@
 exports.handler = async (event) => {
   const className = event.mountain;
-  const mountain = require(`./mountains/${className}.js`)[className];
+  const module = await import('./mountains/' + className + '.js');
+  const mountain = module[className];
   const chromium = require('chrome-aws-lambda');
 
   const fetchWithXpath = async (page, xpath) => {
