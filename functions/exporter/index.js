@@ -49,7 +49,7 @@ exports.handler = async (event, context, callback) => {
 
   // S3に保存
   const s3 = new AWS.S3();
-  const bucketName = 'pow-data-csv';
+  const bucketName = process.env.S3_BUCKET_NAME;
   const keyName = `${fileName}.csv`;
 
   await s3

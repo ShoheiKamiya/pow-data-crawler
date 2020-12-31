@@ -15,7 +15,11 @@
   },
   "scripts": {
     "start": "node indexLocal.js",
-    "build": "babel src --out-dir ./dist"
+    "build": "babel src --out-dir ./dist",
+    "deploy:crawler:dev": "cd functions/crawler && sls deploy -s dev",
+    "deploy:crawler:prod": "cd functions/crawler && sls deploy -s prod",
+    "deploy:exporter:dev": "cd functions/exporter && sls deploy -s dev",
+    "deploy:exporter:prod": "cd functions/exporter && sls deploy -s prod"
   },
   "husky": {
     "hooks": {
