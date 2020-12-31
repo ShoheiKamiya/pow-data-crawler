@@ -22,6 +22,7 @@ exports.handler = async (event) => {
     ignoreHTTPSErrors: true,
   });
   const page = await browser.newPage();
+  await page.emulateTimezone('Asia/Tokyo');
 
   await page.goto(mountain.URL, {
     waitUntil: 'networkidle0',
