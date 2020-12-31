@@ -30,6 +30,8 @@ functions:
     runtime: nodejs12.x
     memorySize: 1024
     timeout: 30
+    events:
+      - schedule: cron(30 23 * * ? *)
     environment:
       CRAWLER_FUNCTION_NAME: ${file(../crawler/serverless.yml):service}-${self:provider.stage}
       S3_BUCKET_NAME: pow-data-csv-${self:provider.stage}
