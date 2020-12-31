@@ -1,3 +1,9 @@
 node_modules
 stats
 dist
+
+# serverless frameworkで生成されるファイル
+functions/crawler/.serverless
+functions/crawler/.webpack
+functions/exporter/.serverless
+functions/exporter/.webpack
