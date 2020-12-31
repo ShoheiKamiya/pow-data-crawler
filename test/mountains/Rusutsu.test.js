@@ -1,4 +1,4 @@
-import { Rusutsu } from '../../src/crawler/mountains/Rusutsu.js';
+import { Rusutsu } from '../../functions/crawler/mountains/Rusutsu.js';
 
 // snowfall: '+5cm',
 // depth: '150cm',

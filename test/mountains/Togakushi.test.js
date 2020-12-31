@@ -1,4 +1,4 @@
-import { Togakushi } from '../../src/crawler/mountains/Togakushi.js';
+import { Togakushi } from '../../functions/crawler/mountains/Togakushi.js';
 
 // snowfall: null,
 // depth: '125',

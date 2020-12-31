@@ -1,4 +1,4 @@
-import { formatDate } from '../src/crawler/utils';
+import { formatDate } from '../functions/crawler/utils';
 
 test('フォーマットすること', () => {
   const date1 = new Date(2020, 12 - 1, 20);
