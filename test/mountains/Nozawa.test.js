@@ -1,4 +1,4 @@
-import { Nozawa } from '../../src/mountains/Nozawa.js';
+import { Nozawa } from '../../src/crawler/mountains/Nozawa.js';
 
 // snowfall: '0                      cm',
 // depth: '175                      cm',

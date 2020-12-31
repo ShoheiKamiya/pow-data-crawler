@@ -1,4 +1,4 @@
-import { Madarao } from '../../src/mountains/Madarao.js';
+import { Madarao } from '../../src/crawler/mountains/Madarao.js';
 
 // snowfall: '-',
 // depth: '160',
