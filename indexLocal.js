@@ -1,12 +1,12 @@
 import puppeteer from 'puppeteer';
 import pkg from 'csv-writer';
 const { createObjectCsvWriter } = pkg;
-import { GrandHirafu } from './src/crawler/mountains/GrandHirafu.js';
-import { HakubaGoryu } from './src/crawler/mountains/HakubaGoryu.js';
-import { Madarao } from './src/crawler/mountains/Madarao.js';
-import { Nozawa } from './src/crawler/mountains/Nozawa.js';
-import { Rusutsu } from './src/crawler/mountains/Rusutsu.js';
-import { Togakushi } from './src/crawler/mountains/Togakushi.js';
+import { GrandHirafu } from './functions/crawler/mountains/GrandHirafu.js';
+import { HakubaGoryu } from './functions/crawler/mountains/HakubaGoryu.js';
+import { Madarao } from './functions/crawler/mountains/Madarao.js';
+import { Nozawa } from './functions/crawler/mountains/Nozawa.js';
+import { Rusutsu } from './functions/crawler/mountains/Rusutsu.js';
+import { Togakushi } from './functions/crawler/mountains/Togakushi.js';
 
 const fetchWithXpath = async (page, xpath) => {
   if (!xpath) {
