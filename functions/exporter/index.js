@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const fs = require('fs');
+const axios = require('axios');
 
 const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter;
 
@@ -28,6 +29,20 @@ exports.handler = async (event, context, callback) => {
   const values = await Promise.all(crawlers);
   const results = values.map((value) => JSON.parse(value.Payload));
   console.log({ results });
+
+  // slackに通知
+  const URL = process.env.SLACK_WEBHOOK_URL;
+  const params = {
+    text: `this is ${process.env.STAGE}\n${JSON.stringify(results)}`,
+  };
+  axios
+    .post(URL, params)
+    .then(({ status, statusText }) => {
+      console.log('success', status, statusText);
+    })
+    .catch(({ response }) => {
+      console.log('error', response.status, response.statusText);
+    });
 
   // CSVに書き出し
   const fileName = yyyymmdd(new Date());
