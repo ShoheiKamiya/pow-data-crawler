@@ -38,3 +38,4 @@ functions:
       S3_BUCKET_NAME: pow-data-csv-${self:provider.stage}
       SLACK_WEBHOOK_URL: ${file(./env.yml):slack_webhook_url}
       STAGE: ${self:provider.stage}
+      TZ: Asia/Tokyo

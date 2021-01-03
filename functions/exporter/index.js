@@ -6,7 +6,9 @@ const createObjectCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 exports.handler = async (event, context, callback) => {
   const yyyymmdd = (date) => {
-    return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
+    return `${date.getFullYear()}${String(date.getMonth() + 1).padStart(2, '0')}${String(
+      date.getDate() + 1,
+    ).padStart(2, '0')}`;
   };
 
   // クローリング
