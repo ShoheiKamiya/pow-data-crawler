@@ -19,6 +19,12 @@ export class Nozawa extends Mountain {
       updated: '//*[@id="now_gelande"]/div/div[1]/p',
     };
   }
+  static get NAME() {
+    return '野沢温泉スキー場';
+  }
+  static get PREFECTURE() {
+    return '長野県';
+  }
 
   static parseSnowfall(snowfallStr) {
     if (snowfallStr === null) {

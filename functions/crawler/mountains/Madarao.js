@@ -19,6 +19,12 @@ export class Madarao extends Mountain {
       updated: '/html/body/section/div[1]/div[2]/div/dl[1]/dd',
     };
   }
+  static get NAME() {
+    return '斑尾高原スキー場';
+  }
+  static get PREFECTURE() {
+    return '長野県';
+  }
 
   static parseSnowfall(snowfallStr) {
     const value = snowfallStr.match(/\d+/, '');

@@ -19,6 +19,12 @@ export class Rusutsu extends Mountain {
       updated: '/html/body/main/article[4]/section/h4',
     };
   }
+  static get NAME() {
+    return 'ルスツリゾートスキー場';
+  }
+  static get PREFECTURE() {
+    return '北海道';
+  }
 
   static parseSnowfall(snowfallStr) {
     return Number(snowfallStr.match(/\d+/, ''));

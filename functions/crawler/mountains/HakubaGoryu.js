@@ -20,6 +20,12 @@ export class HakubaGoryu extends Mountain {
       updated: '//*[@id="y-course-weather"]/table/tbody/tr[1]/th',
     };
   }
+  static get NAME() {
+    return 'エイブル白馬五竜スキー場';
+  }
+  static get PREFECTURE() {
+    return '長野県';
+  }
 
   static parseSnowfall(snowfallStr) {
     const value = snowfallStr.match(/\d+/, '');

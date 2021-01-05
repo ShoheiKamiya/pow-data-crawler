@@ -19,6 +19,12 @@ export class Togakushi extends Mountain {
       updated: '//*[@id="view_date"]',
     };
   }
+  static get NAME() {
+    return '戸隠スキー場';
+  }
+  static get PREFECTURE() {
+    return '長野県';
+  }
 
   static parseSnowfall(snowfallStr) {
     return null;

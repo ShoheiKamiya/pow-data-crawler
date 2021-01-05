@@ -29,22 +29,41 @@ exports.handler = async (event, context, callback) => {
     return lambda.invoke(params).promise();
   });
   const values = await Promise.all(crawlers);
-  const results = values.map((value) => JSON.parse(value.Payload));
-  console.log({ results });
+  const params = values.map((value) => JSON.parse(value.Payload).params);
+  const messages = values.map((value) => JSON.parse(value.Payload).messages);
 
   // slackに通知
   const URL = process.env.SLACK_WEBHOOK_URL;
-  const params = {
-    text: `this is ${process.env.STAGE}\n${JSON.stringify(results)}`,
+  const text = {
+    text: `this is ${process.env.STAGE}\n${JSON.stringify(params)}`,
   };
   axios
-    .post(URL, params)
+    .post(URL, text)
     .then(({ status, statusText }) => {
       console.log('success', status, statusText);
     })
     .catch(({ response }) => {
       console.log('error', response.status, response.statusText);
     });
+
+  // botを呼び出し
+  await lambda
+    .invoke({
+      FunctionName: 'pow-data-bot-dev',
+      Payload: JSON.stringify({
+        messages: [
+          {
+            type: 'flex',
+            altText: '本日のスキー場の状況をお知らせします！',
+            contents: {
+              type: 'carousel',
+              contents: messages,
+            },
+          },
+        ],
+      }),
+    })
+    .promise();
 
   // CSVに書き出し
   const fileName = yyyymmdd(new Date());
@@ -59,7 +78,7 @@ exports.handler = async (event, context, callback) => {
       { id: 'updated', title: 'updated' },
     ],
   });
-  await csv.writeRecords(results);
+  await csv.writeRecords(params);
   console.log('*************************');
   console.log('DONE!! csv is exported!');
   console.log('*************************');

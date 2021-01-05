@@ -1,0 +1,29 @@
+service: pow-data-bot
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ap-northeast-1
+  logRetentionInDays: 7
+package: ${file(../../serverless.common.yml):package}
+plugins:
+  - serverless-webpack
+  - serverless-pseudo-parameters
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.cjs'
+    includeModules: false
+    packager: 'yarn'
+functions:
+  bot:
+    handler: index.handler
+    layers:
+      - arn:aws:lambda:ap-northeast-1:172334698875:layer:axios:1
+    name: ${self:service}-${self:provider.stage}
+    description: クローリング結果をLINEに通知する
+    runtime: nodejs12.x
+    memorySize: 128
+    timeout: 3
+    environment:
+      LINE_CHANNEL_ACCESS_TOKEN: ${file(./env.yml):line_access_token}

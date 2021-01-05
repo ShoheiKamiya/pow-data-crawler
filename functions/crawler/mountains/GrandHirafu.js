@@ -18,6 +18,12 @@ export class GrandHirafu extends Mountain {
       updated: '//*[@id="weather_update_time"]',
     };
   }
+  static get NAME() {
+    return 'ニセコマウンテンリゾートグラン・ヒラフ';
+  }
+  static get PREFECTURE() {
+    return '北海道';
+  }
 
   static parseSnowfall(snowfallStr) {
     return null;

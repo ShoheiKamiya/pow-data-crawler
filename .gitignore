@@ -1,6 +1,7 @@
 node_modules
 stats
 dist
+local.js
 
 # serverless frameworkで生成されるファイル
 functions/crawler/.serverless
@@ -8,3 +9,6 @@ functions/crawler/.webpack
 functions/exporter/env.yml
 functions/exporter/.serverless
 functions/exporter/.webpack
+functions/bot/env.yml
+functions/bot/.serverless
+functions/bot/.webpack

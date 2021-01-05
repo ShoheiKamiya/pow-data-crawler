@@ -35,5 +35,5 @@ exports.handler = async (event) => {
 
   browser.close();
 
-  return m.params;
+  return { messages: m.bubble, params: m.params };
 };

@@ -17,6 +17,8 @@
   "scripts": {
     "start": "node indexLocal.js",
     "build": "babel src --out-dir ./dist",
+    "deploy:bot:dev": "cd functions/bot && sls deploy -s dev",
+    "deploy:bot:prod": "cd functions/bot && sls deploy -s prod",
     "deploy:crawler:dev": "cd functions/crawler && sls deploy -s dev",
     "deploy:crawler:prod": "cd functions/crawler && sls deploy -s prod",
     "deploy:exporter:dev": "cd functions/exporter && sls deploy -s dev",
