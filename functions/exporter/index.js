@@ -49,7 +49,7 @@ exports.handler = async (event, context, callback) => {
   // botを呼び出し
   await lambda
     .invoke({
-      FunctionName: 'pow-data-bot-dev',
+      FunctionName: process.env.BOT_FUNCTION_NAME,
       Payload: JSON.stringify({
         messages: [
           {

@@ -36,6 +36,7 @@ functions:
       - schedule: cron(30 23 * * ? *)
     environment:
       CRAWLER_FUNCTION_NAME: ${file(../crawler/serverless.yml):service}-${self:provider.stage}
+      BOT_FUNCTION_NAME: ${file(../bot/serverless.yml):service}-${self:provider.stage}
       S3_BUCKET_NAME: pow-data-csv-${self:provider.stage}
       SLACK_WEBHOOK_URL: ${file(./env.yml):slack_webhook_url}
       STAGE: ${self:provider.stage}

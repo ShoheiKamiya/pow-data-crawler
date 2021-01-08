@@ -15,6 +15,9 @@ custom:
     webpackConfig: 'webpack.config.cjs'
     includeModules: false
     packager: 'yarn'
+  environment:
+    dev: ${file(env.dev.yml)}
+    prod: ${file(env.prod.yml)}
 functions:
   bot:
     handler: index.handler
@@ -25,5 +28,4 @@ functions:
     runtime: nodejs12.x
     memorySize: 128
     timeout: 3
-    environment:
-      LINE_CHANNEL_ACCESS_TOKEN: ${file(./env.yml):line_access_token}
+    environment: ${self:custom.environment.${self:provider.stage}}
