@@ -28,6 +28,16 @@ export const snowfallBlock = (num) => {
       align: 'end',
     };
   }
+  if (num > 0 && num < 15) {
+    return {
+      type: 'text',
+      text: `+ ${num} cm`,
+      size: 'sm',
+      color: black,
+      align: 'end',
+      weight: 'bold',
+    };
+  }
   if (num >= 15 && num < 30) {
     return {
       type: 'text',
