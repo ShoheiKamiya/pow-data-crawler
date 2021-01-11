@@ -53,6 +53,10 @@ exports.handler = async (event, context, callback) => {
       Payload: JSON.stringify({
         messages: [
           {
+            type: 'text',
+            text: 'おはようございます！\n本日のスキー場の状況をお知らせします！',
+          },
+          {
             type: 'flex',
             altText: '本日のスキー場の状況をお知らせします！',
             contents: {
