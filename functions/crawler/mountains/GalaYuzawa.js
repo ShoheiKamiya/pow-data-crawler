@@ -14,8 +14,8 @@ export class GalaYuzawa extends Mountain {
     return {
       snowfall: null,
       depth: '', // TODO
-      temperature: '', // TODO
-      updated: '', // TODO
+      temperature: '//*[@id="page_cont"]/div[2]/div[3]/p[2]/span',
+      updated: '//*[@id="page_cont"]/div[2]/div[1]/p[3]',
     };
   }
   static get NAME() {
@@ -25,13 +25,19 @@ export class GalaYuzawa extends Mountain {
     return '新潟県';
   }
 
-  static parseSnowfall(snowfallStr) {}
+  static parseSnowfall(snowfallStr) {
+    return null;
+  }
 
   static parseDepth(depthStr) {}
 
-  static parseTemperature(temperatureStr) {}
+  static parseTemperature(temperatureStr) {
+    return Number(temperatureStr);
+  }
 
-  static parseUpdated(updatedStr) {}
+  static parseUpdated(updatedStr) {
+    return updatedStr.replace(' 更新', '').split('.').join('-');
+  }
 
   get snowfall() {
     return GalaYuzawa.parseSnowfall(this.snowfallStr);
