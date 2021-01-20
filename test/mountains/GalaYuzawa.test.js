@@ -6,11 +6,13 @@ describe('parseSnowfall', () => {
   });
 });
 
-// describe('parseDepth', () => {
-//   test('パースできる', () => {
-//     expect(GalaYuzawa.parseDepth(null)).toBe(null);
-//   });
-// });
+describe('parseDepth', () => {
+  test('パースできる', () => {
+    expect(GalaYuzawa.parseDepth('300')).toBe(300);
+    expect(GalaYuzawa.parseDepth('0')).toBe(0);
+    expect(GalaYuzawa.parseDepth('')).toBe(null);
+  });
+});
 
 describe('parseTemperature', () => {
   test('パースできる', () => {

@@ -13,7 +13,7 @@ export class GalaYuzawa extends Mountain {
   static get SELECTORS() {
     return {
       snowfall: null,
-      depth: '', // TODO
+      depth: '//*[@id="page_cont"]/div[2]/div[4]/table/tbody/tr[1]/td/span',
       temperature: '//*[@id="page_cont"]/div[2]/div[3]/p[2]/span',
       updated: '//*[@id="page_cont"]/div[2]/div[1]/p[3]',
     };
@@ -29,7 +29,13 @@ export class GalaYuzawa extends Mountain {
     return null;
   }
 
-  static parseDepth(depthStr) {}
+  static parseDepth(depthStr) {
+    if (depthStr === null || depthStr === '') {
+      return null;
+    }
+
+    return Number(depthStr);
+  }
 
   static parseTemperature(temperatureStr) {
     return Number(temperatureStr);
