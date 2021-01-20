@@ -14,6 +14,7 @@ exports.handler = async (event, context, callback) => {
   // クローリング
   const lambda = new AWS.Lambda();
   const mountainClassNames = [
+    'GalaYuzawa',
     'GrandHirafu',
     'HakubaGoryu',
     'Madarao',
