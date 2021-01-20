@@ -2,6 +2,7 @@ import puppeteer from 'puppeteer';
 import pkg from 'csv-writer';
 const { createObjectCsvWriter } = pkg;
 import { GrandHirafu } from './functions/crawler/mountains/GrandHirafu.js';
+import { GalaYuzawa } from './functions/crawler/mountains/GalaYuzawa.js';
 import { HakubaGoryu } from './functions/crawler/mountains/HakubaGoryu.js';
 import { Madarao } from './functions/crawler/mountains/Madarao.js';
 import { Nozawa } from './functions/crawler/mountains/Nozawa.js';
@@ -20,7 +21,7 @@ const yyyymmdd = (date) => {
   return `${date.getFullYear()}${date.getMonth() + 1}${date.getDate()}`;
 };
 
-const mountains = [GrandHirafu, HakubaGoryu, Madarao, Nozawa, Rusutsu, Togakushi];
+const mountains = [GalaYuzawa, GrandHirafu, HakubaGoryu, Madarao, Nozawa, Rusutsu, Togakushi];
 
 let array = [];
 (async () => {
