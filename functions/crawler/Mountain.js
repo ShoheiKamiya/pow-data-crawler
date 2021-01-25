@@ -39,7 +39,7 @@ export class Mountain {
           },
           {
             type: 'text',
-            text: `更新日: ${this.updated}`,
+            text: `更新日: ${this.updated || '-'}`,
             size: 'xs',
             color: '#aaaaaa',
             wrap: true,
@@ -83,7 +83,7 @@ export class Mountain {
                   },
                   {
                     type: 'text',
-                    text: `${this.depth} cm`,
+                    text: `${this.depth || '-'} cm`,
                     size: 'sm',
                     color: '#111111',
                     align: 'end',
@@ -103,7 +103,7 @@ export class Mountain {
                   },
                   {
                     type: 'text',
-                    text: `${this.temperature} ℃`,
+                    text: `${this.temperature || '-'} ℃`,
                     size: 'sm',
                     color: '#111111',
                     align: 'end',
