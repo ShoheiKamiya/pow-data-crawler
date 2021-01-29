@@ -9,6 +9,10 @@ functions/crawler/.webpack
 functions/exporter/env.yml
 functions/exporter/.serverless
 functions/exporter/.webpack
+functions/webhook/.serverless
+functions/webhook/.webpack
+functions/webhook/env.dev.yml
+functions/webhook/env.prod.yml
 functions/bot/env.dev.yml
 functions/bot/env.prod.yml
 functions/bot/.serverless

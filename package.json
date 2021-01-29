@@ -6,7 +6,6 @@
   "author": "ShoheiKamiya <shoooooo.bqt@gmail.com>",
   "license": "MIT",
   "private": false,
-  "type": "module",
   "dependencies": {
     "aws-sdk": "^2.817.0",
     "axios": "^0.21.1",
@@ -17,12 +16,16 @@
   "scripts": {
     "start": "node indexLocal.js",
     "build": "babel src --out-dir ./dist",
+    "offline:webhook": "cd functions/webhook && sls offline",
+    "local:webhook": "cd functions/webhook && sls invoke local --function webhook",
     "deploy:bot:dev": "cd functions/bot && sls deploy -s dev",
     "deploy:bot:prod": "cd functions/bot && sls deploy -s prod",
     "deploy:crawler:dev": "cd functions/crawler && sls deploy -s dev",
     "deploy:crawler:prod": "cd functions/crawler && sls deploy -s prod",
     "deploy:exporter:dev": "cd functions/exporter && sls deploy -s dev",
-    "deploy:exporter:prod": "cd functions/exporter && sls deploy -s prod"
+    "deploy:exporter:prod": "cd functions/exporter && sls deploy -s prod",
+    "deploy:webhook:dev": "cd functions/webhook && sls deploy -s dev",
+    "deploy:webhook:prod": "cd functions/webhook && sls deploy -s prod"
   },
   "husky": {
     "hooks": {
@@ -40,6 +43,7 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "puppeteer": "^5.5.0",
+    "serverless-offline": "^6.8.0",
     "serverless-pseudo-parameters": "^2.5.0",
     "serverless-webpack": "^5.3.5",
     "webpack": "^5.11.1"

@@ -1,0 +1,36 @@
+service: pow-data-webhook
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ap-northeast-1
+  logRetentionInDays: 7
+package: ${file(../../serverless.common.yml):package}
+plugins:
+  - serverless-webpack
+  - serverless-pseudo-parameters
+  - serverless-offline
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.cjs'
+    includeModules: false
+    packager: 'yarn'
+  environment:
+    dev: ${file(env.dev.yml)}
+    prod: ${file(env.prod.yml)}
+functions:
+  webhook:
+    handler: index.handler
+    layers:
+      - arn:aws:lambda:ap-northeast-1:172334698875:layer:axios:1
+    name: ${self:service}-${self:provider.stage}
+    description: LINEのwebhookイベントをハンドリングする
+    runtime: nodejs12.x
+    memorySize: 128
+    timeout: 3
+    environment: ${self:custom.environment.${self:provider.stage}}
+    events:
+      - httpApi:
+          method: POST
+          path: /line
