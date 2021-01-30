@@ -34,12 +34,16 @@ exports.handler = async (event, context, callback) => {
   const messages = values.map((value) => JSON.parse(value.Payload).messages);
 
   // slackに通知
-  const URL = process.env.SLACK_WEBHOOK_URL;
-  const text = {
-    text: `this is ${process.env.STAGE}\n${JSON.stringify(params)}`,
+  const URL = 'https://slack.com/api/chat.postMessage';
+  const headers = {
+    Authorization: `Bearer ${process.env.SLACK_TOKEN}`,
+  };
+  const payload = {
+    channel: process.env.SLACK_CHANNEL,
+    text: JSON.stringify(params),
   };
   axios
-    .post(URL, text)
+    .post(URL, payload, { headers })
     .then(({ status, statusText }) => {
       console.log('success', status, statusText);
     })

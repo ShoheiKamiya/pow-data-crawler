@@ -24,13 +24,17 @@ exports.handler = async (event, context) => {
   const profile = res.data;
 
   // slack
-  const URL = process.env.SLACK_WEBHOOK_URL;
-  const text = {
+  const URL = 'https://slack.com/api/chat.postMessage';
+  const slackHeaders = {
+    Authorization: `Bearer ${process.env.SLACK_TOKEN}`,
+  };
+  const payload = {
+    channel: process.env.SLACK_CHANNEL,
     text: `${profile.displayName}(${userId})が友達追加しました！`,
   };
 
   try {
-    return await axios.post(URL, text);
+    await axios.post(URL, payload, { headers: slackHeaders });
   } catch (e) {
     console.log(e);
   }

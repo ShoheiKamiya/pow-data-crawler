@@ -21,6 +21,10 @@ provider:
 package: ${file(../../serverless.common.yml):package}
 plugins:
   - serverless-pseudo-parameters
+custom:
+  environment:
+    dev: ${file(env.dev.yml)}
+    prod: ${file(env.prod.yml)}
 functions:
   exporter:
     handler: index.handler
@@ -38,6 +42,8 @@ functions:
       CRAWLER_FUNCTION_NAME: ${file(../crawler/serverless.yml):service}-${self:provider.stage}
       BOT_FUNCTION_NAME: ${file(../bot/serverless.yml):service}-${self:provider.stage}
       S3_BUCKET_NAME: pow-data-csv-${self:provider.stage}
-      SLACK_WEBHOOK_URL: ${file(./env.yml):slack_webhook_url}
+      SLACK_WEBHOOK_URL: ${self:custom.environment.${self:provider.stage}.SLACK_WEBHOOK_URL}
+      SLACK_TOKEN: ${self:custom.environment.${self:provider.stage}.SLACK_TOKEN}
+      SLACK_CHANNEL: ${self:custom.environment.${self:provider.stage}.SLACK_CHANNEL}
       STAGE: ${self:provider.stage}
       TZ: Asia/Tokyo
