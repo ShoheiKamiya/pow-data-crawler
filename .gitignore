@@ -6,7 +6,8 @@ local.js
 # serverless frameworkで生成されるファイル
 functions/crawler/.serverless
 functions/crawler/.webpack
-functions/exporter/env.yml
+functions/exporter/env.dev.yml
+functions/exporter/env.prod.yml
 functions/exporter/.serverless
 functions/exporter/.webpack
 functions/webhook/.serverless
