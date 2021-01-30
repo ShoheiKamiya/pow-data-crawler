@@ -43,5 +43,7 @@ functions:
       BOT_FUNCTION_NAME: ${file(../bot/serverless.yml):service}-${self:provider.stage}
       S3_BUCKET_NAME: pow-data-csv-${self:provider.stage}
       SLACK_WEBHOOK_URL: ${self:custom.environment.${self:provider.stage}.SLACK_WEBHOOK_URL}
+      SLACK_TOKEN: ${self:custom.environment.${self:provider.stage}.SLACK_TOKEN}
+      SLACK_CHANNEL: ${self:custom.environment.${self:provider.stage}.SLACK_CHANNEL}
       STAGE: ${self:provider.stage}
       TZ: Asia/Tokyo
