@@ -13,15 +13,7 @@ exports.handler = async (event, context, callback) => {
 
   // クローリング
   const lambda = new AWS.Lambda();
-  const mountainClassNames = [
-    'GalaYuzawa',
-    'GrandHirafu',
-    'HakubaGoryu',
-    'Madarao',
-    'Nozawa',
-    'Rusutsu',
-    'Togakushi',
-  ];
+  const mountainClassNames = ['GalaYuzawa', 'Madarao', 'Nozawa', 'Rusutsu', 'Togakushi'];
   const crawlers = mountainClassNames.map((mountain) => {
     const params = {
       FunctionName: process.env.CRAWLER_FUNCTION_NAME,
