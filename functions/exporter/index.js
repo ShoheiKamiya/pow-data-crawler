@@ -16,7 +16,7 @@ exports.handler = async (event, context, callback) => {
   const mountainClassNames = [
     'GalaYuzawa',
     'GrandHirafu',
-    'HakubaGoryu',
+    // 'HakubaGoryu',
     'Madarao',
     'Nozawa',
     'Rusutsu',
